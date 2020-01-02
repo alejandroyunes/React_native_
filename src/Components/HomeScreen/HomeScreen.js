@@ -24,21 +24,16 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <>
-        <View>
-          <StatusBar backgroundColor="lightgreen" barStyle="dark-content" />
-        </View>
-
-        <StyleProvider style={getTheme(material)}>
+        <HeaderComponent Navigate={this.props.navigation} />
           <Container>
+          
             <ImageBackground
               source={cardImage}
               style={{
                 width: Dimensions.get('window').width,
                 height: Dimensions.get('window').height,
               }}>
-
-           
-
+             
               <Button
                 light
                 onPress={() => this.props.navigation.navigate('Settings')}>
@@ -52,7 +47,7 @@ export default class HomeScreen extends React.Component {
                 onPress={() => this.props.navigation.openDrawer()}></Button>
             </ImageBackground>
           </Container>
-        </StyleProvider>
+
       </>
     );
   }

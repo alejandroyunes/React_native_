@@ -4,16 +4,15 @@ import {ImageBackground, Dimensions, View, Text} from 'react-native';
 import {Container, StyleProvider, Button} from 'native-base';
 
 const cardImage = require('../../Media/background.png');
-
-import getTheme from '../../native-base-theme/components';
-import material from '../../native-base-theme/variables/material';
+import HeaderComponent from '../Header/HeaderComponent';
 
 export default class SettingsScreen extends React.Component {
   render() {
     return (
       <>
+          <HeaderComponent Navigate={this.props.navigation} />
 
-        <StyleProvider style={getTheme(material)}>
+        
           <Container>
             <ImageBackground
               source={cardImage}
@@ -32,9 +31,11 @@ export default class SettingsScreen extends React.Component {
               <Button
                 title="Open Drawer"
                 onPress={() => this.props.navigation.openDrawer()}></Button>
+
+              <Button light><Text> Light </Text></Button>
             </ImageBackground>
           </Container>
-        </StyleProvider>
+
       </>
     );
   }

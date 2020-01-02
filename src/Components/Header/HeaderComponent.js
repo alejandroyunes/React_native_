@@ -3,16 +3,13 @@ import { Dimensions, View, Text, StatusBar} from 'react-native';
 
 import {Container, StyleProvider, Button, Header, Title, Icon, Left, Right, Body} from 'native-base';
 
-import getTheme from '../../native-base-theme/components';
-import material from '../../native-base-theme/variables/material';
-
 export default class HeaderComponent extends React.Component {
   render() {
     return (
-      <>
-        <StyleProvider style={getTheme(material)}>
-          <Container>
-            <Header>
+   
+   
+    
+            <Header androidStatusBarColor="lightgreen">
               <Left>
                 <Button transparent>
                   <Icon
@@ -33,9 +30,9 @@ export default class HeaderComponent extends React.Component {
                 </Button>
               </Right>
             </Header>
-          </Container>
-        </StyleProvider>
-      </>
+
+    
+   
     );
   }
 }
