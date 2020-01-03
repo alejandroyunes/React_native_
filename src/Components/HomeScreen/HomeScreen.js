@@ -20,34 +20,39 @@ import material from '../../native-base-theme/variables/material';
 
 import HeaderComponent from '../Header/HeaderComponent';
 
+
 export default class HomeScreen extends React.Component {
   render() {
     return (
       <>
         <HeaderComponent Navigate={this.props.navigation} />
-          <Container>
-          
-            <ImageBackground
-              source={cardImage}
-              style={{
-                width: Dimensions.get('window').width,
-                height: Dimensions.get('window').height,
-              }}>
-             
-              <Button
-                light
-                onPress={() => this.props.navigation.navigate('Settings')}>
-                <Text>Go to Settings</Text>
-              </Button>
-              <Button>
-                <Text>Info</Text>
-              </Button>
-              <Button
-                title="Open Drawer"
-                onPress={() => this.props.navigation.openDrawer()}></Button>
-            </ImageBackground>
-          </Container>
+        <Container>
+          <ImageBackground
+            source={cardImage}
+            style={{
+              width: Dimensions.get('window').width,
+              height: Dimensions.get('window').height,
+            }}>
+            <Button
+              light
+              onPress={() => this.props.navigation.navigate('Settings')}>
+              <Text style={{fontSize: 25, color: 'blue'}}>Go to Settings</Text>
+            </Button>
+            <Button>
+              <Text>Info</Text>
+            </Button>
+            <Button
+              title="Open Drawer"
+              onPress={() => this.props.navigation.openDrawer()}></Button>
 
+            <Icon
+              style={{fontSize: 45, color: 'white'}}
+              type="FontAwesome"
+              name="home"
+            />
+         
+          </ImageBackground>
+        </Container>
       </>
     );
   }

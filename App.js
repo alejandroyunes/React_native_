@@ -8,6 +8,26 @@ import {Container, Button, StyleProvider} from 'native-base';
 import HomeScreen from './src/Components/HomeScreen/HomeScreen';
 import SettingsScreen from './src/Components/Screens/SettingsScreen';
       
+import {createStore} from 'redux';
+import { Provider } from 'react-redux';
+
+
+const initialState = {
+  counter:0
+}
+
+const reducer = (state = initialState, action)=>{
+    switch(action.type){
+        case 'INCREASE_COUNTER':
+          return{counter: state.counter + 1}
+        case 'DECREASE_COUNTER':
+           return {counter: state.counter - 1}
+  }
+  return state
+}
+
+const store = createStore(reducer);
+
 
 
 const RootStack = createStackNavigator(
@@ -50,9 +70,15 @@ const Drawer = createDrawerNavigator(
 
 const AppContainer = createAppContainer(Drawer,RootStack);
 
+
 export default class App extends React.Component {
   render() {
-    return <AppContainer />;
+    return (
+      <Provider store={store}>
+      <AppContainer />
+      </Provider>
+    );
+    
   }
 }
 
