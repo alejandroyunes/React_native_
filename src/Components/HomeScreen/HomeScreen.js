@@ -1,24 +1,16 @@
 import React from 'react';
-import {ImageBackground, Dimensions, View, Text, StatusBar} from 'react-native';
+import { ImageBackground, Dimensions, StyleSheet, Text} from 'react-native';
 
 import {
   Container,
-  StyleProvider,
   Button,
-  Header,
-  Title,
   Icon,
-  Left,
-  Right,
-  Body,
 } from 'native-base';
 
 const cardImage = require('../../Media/background.png');
 
-import getTheme from '../../native-base-theme/components';
-import material from '../../native-base-theme/variables/material';
-
 import HeaderComponent from '../Header/HeaderComponent';
+
 
 
 export default class HomeScreen extends React.Component {
@@ -51,9 +43,33 @@ export default class HomeScreen extends React.Component {
               name="home"
             />
          
+
+            <Button
+              light
+              onPress={() => this.props.navigation.navigate('Login')}>
+              <Text style={{ fontSize: 25, color: 'blue' }}>Login</Text>
+            </Button>
+
+            <Button
+              light
+              onPress={() => this.props.navigation.navigate('Loading')}>
+              <Text style={{ fontSize: 25, color: 'blue' }}>Loading</Text>
+            </Button>
+      
           </ImageBackground>
         </Container>
       </>
     );
   }
 }
+
+const offset = 24;
+const styles = StyleSheet.create({
+  nameInput: { // 3. <- Add a style for the input
+    height: offset * 2,
+    margin: offset,
+    paddingHorizontal: offset,
+    borderColor: '#fff',
+    borderWidth: 1,
+  },
+});

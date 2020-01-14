@@ -1,7 +1,7 @@
 import React from 'react';
-import {ImageBackground, Dimensions, View, Text, TouchableOpacity} from 'react-native';
+import {ImageBackground, Dimensions, Text, TouchableOpacity} from 'react-native';
 
-import {Container, StyleProvider, Button, Content} from 'native-base';
+import {Container ,Button} from 'native-base';
 
 const cardImage = require('../../Media/background.png');
 import HeaderComponent from '../Header/HeaderComponent';

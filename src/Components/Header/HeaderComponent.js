@@ -1,10 +1,8 @@
 import React from 'react';
-import { Dimensions, View, Text, StatusBar} from 'react-native';
 
-import {Container, Button, Header, Title, Icon, Left, Right, Body} from 'native-base';
 
-import getTheme from '../../native-base-theme/components';
-import material from '../../native-base-theme/variables/material';
+import { Button, Header, Title, Icon, Left, Right, Body} from 'native-base';
+
 
 export default class HeaderComponent extends React.Component {
   render() {

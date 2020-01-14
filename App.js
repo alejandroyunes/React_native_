@@ -1,12 +1,14 @@
 import * as React from 'react';
-import {View, Text, SafeAreaView, Image, StatusBar} from 'react-native';
+import {View,  SafeAreaView, Image} from 'react-native';
 import {createAppContainer} from 'react-navigation';
 import {createStackNavigator} from 'react-navigation-stack';
 import {createDrawerNavigator, DrawerItems} from 'react-navigation-drawer';
 
-import {Container, Button, StyleProvider} from 'native-base';
 import HomeScreen from './src/Components/HomeScreen/HomeScreen';
 import SettingsScreen from './src/Components/Screens/SettingsScreen';
+import Login from './src/Components/Login/Login';
+import Loading from './src/Components/Loading/Loading';
+import SignUp from './src/Components/SignUp/SignUp';
       
 import {createStore} from 'redux';
 import { Provider } from 'react-redux';
@@ -34,6 +36,9 @@ const RootStack = createStackNavigator(
   {
     Home: HomeScreen,
     Settings: SettingsScreen,
+    Login,
+    Loading,
+    SignUp
   },
   {
     initialRouteName: 'Home',
@@ -61,7 +66,9 @@ const Drawer = createDrawerNavigator(
   {
     Home: HomeScreen,
     Settings: SettingsScreen,
-  },
+    Login, 
+    Loading,
+    SignUp  },
   {
     contentComponent: CustomDrawerComponent,
   },
@@ -78,7 +85,6 @@ export default class App extends React.Component {
       <AppContainer />
       </Provider>
     );
-    
   }
 }
 
