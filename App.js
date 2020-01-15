@@ -30,8 +30,6 @@ const reducer = (state = initialState, action)=>{
 
 const store = createStore(reducer);
 
-
-
 const RootStack = createStackNavigator(
   {
     Home: HomeScreen,

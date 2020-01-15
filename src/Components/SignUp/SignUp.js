@@ -1,82 +1,85 @@
-import React from 'react'
-import { StyleSheet, Text, TextInput, View, TouchableOpacity } from 'react-native'
-import { Firebase } from "../../Firebase/FirebaseSDK";
+import React, { Component } from 'react';
+import { StyleSheet, TextInput, View, KeyboardAvoidingView } from 'react-native';
+import firebaseSDK from '../../Firebase/FirebaseSDK';
+import { Container, Text, Body, Button, Icon, H1, Form, Item, Input, Content } from 'native-base';
 
+export default class signUp extends Component {
+    static navigationOptions = {
+        title: 'Registro'
+    };
 
-export default class SignUp extends React.Component {
+    state = {
+        name: '',
+        email: '',
+        password: '',
+        avatar: ''
+    };
 
-    handleSignUp = () => {
-        const { name, email, password } = this.state
-        Firebase.auth()
-            .createUserWithEmailAndPassword(name, email, password)
-            .then(() => this.props.navigation.navigate('Loading'))
-            .catch(error => console.log(error))
+    clearForm(){
+        this.setState({
+            name:'',
+            email : '',
+            password : ''
+        })
     }
+
+    onPressCreate =async()=>{
+        try {
+            const user ={
+                name : this.state.name,
+                email : this.state.email,
+                password : this.state.password
+            }
+
+            await firebaseSDK.createAccount(user);
+            this.clearForm();
+            
+        } catch (error) {
+            
+        }
+    }
+
+
+
     render() {
         return (
-            <View style={styles.container}>
-                <Text>Sign Up</Text>
-               
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.state.name}
-                    onChangeText={name => this.setState({ name })}
-                    placeholder='Full Name'
-                />
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.state.email}
-                    onChangeText={email => this.setState({ email })}
-                    placeholder='Email'
-                    autoCapitalize='none'
-                />
-                <TextInput
-                    style={styles.inputBox}
-                    value={this.state.password}
-                    onChangeText={password => this.setState({ password })}
-                    placeholder='Password'
-                    secureTextEntry={true}
-                />
-                <TouchableOpacity style={styles.button} onPress={this.handleSignUp}>
-                    <Text style={styles.buttonText}>Signup</Text>
-                </TouchableOpacity>
-            </View>
-        )
+            <Container>
+                <Content padder>
+                    <H1 style={styles.title}>Crear Usuario</H1>
+                    <KeyboardAvoidingView behavior="padding" enabled>
+                        <Form>
+                            <Item rounded style={styles.my_s}
+                            >
+                                <Icon active name="mail" style={{ color: "gray" }} />
+                                <Input autoCapitalize="none" value={this.state.email} onChangeText={(email) => this.setState({ email })} placeholder="Correo" placeholderTextColor="gray" />
+                            </Item>
+                            <Item rounded style={styles.my_s}>
+                                <Icon active name="lock" style={{ color: "gray" }} />
+                                <Input autoCapitalize="none" value={this.state.password} onChangeText={(password) => { this.setState({ password }) }} placeholder="Contraseña" placeholderTextColor="gray" />
+                            </Item>
+                            <Item rounded style={styles.my_s}>
+                                <Icon active name="person" style={{ color: "gray" }} />
+                                <Input autoCapitalize="none" value={this.state.name} onChangeText={(name) => { this.setState({ name }) }} placeholder="Usuario" placeholderTextColor="gray" />
+                            </Item>
+                            <Button iconRight rounded block success style={styles.my_s} onPress={this.onPressCreate}>
+                                <Text>Create</Text>
+                                <Icon name='arrow-forward' />
+                            </Button>
+                        </Form>
+                    </KeyboardAvoidingView>
+                </Content>
+            </Container>
+
+        );
     }
 }
+
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center'
+    title: {
+        marginVertical: 20,
+        fontSize: 32
     },
-    inputBox: {
-        width: '85%',
-        margin: 10,
-        padding: 15,
-        fontSize: 16,
-        borderColor: '#d3d3d3',
-        borderBottomWidth: 1,
-        textAlign: 'center'
-    },
-    button: {
-        marginTop: 30,
-        marginBottom: 20,
-        paddingVertical: 5,
-        alignItems: 'center',
-        backgroundColor: '#FFA611',
-        borderColor: '#FFA611',
-        borderWidth: 1,
-        borderRadius: 5,
-        width: 200
-    },
-    buttonText: {
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#fff'
-    },
-    buttonSignup: {
-        fontSize: 12
+    my_s: {
+        marginVertical: 10
     }
-})
+});
