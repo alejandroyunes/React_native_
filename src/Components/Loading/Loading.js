@@ -1,11 +1,10 @@
 import React from 'react'
-import { View, Text, ActivityIndicator, StyleSheet, Dimensions } from 'react-native'
+import { View, ActivityIndicator, StyleSheet, Dimensions } from 'react-native'
 export default class Loading extends React.Component {
     render() {
         return (
             
             <View style={styles.container}>
-         |
                 <ActivityIndicator size="large" color="lightgreen" />
             </View>
         )

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, TextInput, View, KeyboardAvoidingView } from 'react-native';
+import { StyleSheet, KeyboardAvoidingView } from 'react-native';
 import firebaseSDK from '../../Firebase/FirebaseSDK';
-import { Container, Text, Body, Button, Icon, H1, Form, Item, Input, Content } from 'native-base';
+import { Container, Text, Button, Icon, H1, Form, Item, Input, Content } from 'native-base';
 
 export default class signUp extends Component {
     static navigationOptions = {
-        title: 'Registro'
+        title: 'Sign Up'
     };
 
     state = {
@@ -38,9 +38,6 @@ export default class signUp extends Component {
             
         }
     }
-
-
-
     render() {
         return (
             <Container>

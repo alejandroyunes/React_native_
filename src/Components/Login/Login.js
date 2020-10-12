@@ -33,13 +33,9 @@ export default class Login extends Component{
     loginFailed = () => {
         alert('Error al entrar, usuarios incorrectos');
     };
-
-
-
     render(){
     return (
         <>
-
         <View style={styles.container}>
             <TextInput
                 style={styles.inputBox}
@@ -47,32 +43,24 @@ export default class Login extends Component{
                 onChangeText={email => this.setState({email})}
             value={this.state.email}
             />
-
             <TextInput
             style={styles.nameInput}
             onChangeText={password => this.setState({password})}
             value={this.state.password}
             placeholder='Password'
              />
-
-
             <TouchableOpacity 
             style={styles.button}
             onPress={this.login}>
                 <Text style={styles.buttonText}>Login</Text>
             </TouchableOpacity>
-            <Button title="Don't have an account yet? Sign up" />
-           
+            <Button title="Don't have an account yet? Sign up" />  
                 </View> 
                 {(this.state.loading && this.state.loading != '')?<Loading/>:<Text></Text>}
         </>
     )
 }
 }
-
-
-
-
 
 const styles = StyleSheet.create({
     container: {
